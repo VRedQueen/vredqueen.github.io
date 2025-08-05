@@ -21,14 +21,14 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g pnpm
-          pnpm install         
+          pnpm install
       - name: Build with Astro
         uses: withastro/action@v3
-      - name: Upload build output
-        uses: actions/upload-artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: dist/
+          name: dist-${{ github.run_id }}  # Nome único
 
   deploy:
     needs: build
