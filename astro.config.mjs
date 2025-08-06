@@ -26,8 +26,8 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://redqueen.github.io",
-	base:"/redqueen.github.io",
+	site: "https://vredqueen.github.io",
+	base:"/",
 	outDir: "./dist",
 	
 	trailingSlash: "always",
