@@ -1,7 +1,7 @@
 ---
 title: n0s4n1ty 1
 published: 2025-08-07
-description: Solving n0s4n1ty 1 – PicoCTF Writeup.
+description: We exploited an unrestricted file upload to deploy a PHP webshell, gaining command execution. Then, using sudo, we captured the flag.
 image: ''
 tags: [CTF, picoctf, web]
 category: PicoCTF
@@ -45,11 +45,20 @@ We don’t need to overthink and build something from scratch — simple solutio
 - `if (isset($_GET['cmd']))` → Checks if someone **typed something and pressed the button**...
 - `system($_GET['cmd'] . ' 2>&1');` → The server **runs the command in the terminal** and shows the result.
 
-After uploading the file, the page refreshes and tells us that our file is located at `/uploads/photo.php`. Visiting that path, we see our shell is working as expected.
+
+We can put the code into a file. For testing purposes, we’ll name the file photo.php. To upload, we can simply use the upload interface.
+
+![](./image1-2.png)
+
+The page refreshed, leaving us with two findings: the site has no restrictions on file uploads, and our shell is located in the /uploads/photo.php directory.
+
+![](./image1-3.png)
+
+Visiting that path, we see our shell is working as expected.
 
 ![](./image2.png)
 
-We use the command `id` to check which user is running our commands. As expected, the user is **www-data**.
+We use the command `id` to check which user is running our commands. And the user is **www-data**.
 
 ![](./image3.png)
 
