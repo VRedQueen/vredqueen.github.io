@@ -2,14 +2,14 @@
 title: n0s4n1ty 1
 published: 2025-08-07
 description: Solving n0s4n1ty 1 – PicoCTF Writeup.
-image: 
+image: ''
 tags: [CTF, picoctf, web]
 category: PicoCTF
 draft: false
 ---
 The challenge starts by giving us a simple page containing just a profile upload interface.
 
-![image.png](attachment:2663c5c9-db7b-4983-84df-96fb87eafa36:image.png)
+![upload interface](./image1.png)
 
 Trying to type or browse through the URL doesn’t give us anything — only a page error. With that, we can assume that the easiest way (and probably the intended way) to proceed is to **upload a shell**.
 
@@ -47,18 +47,18 @@ We don’t need to overthink and build something from scratch — simple solutio
 
 After uploading the file, the page refreshes and tells us that our file is located at `/uploads/photo.php`. Visiting that path, we see our shell is working as expected.
 
-![image.png](attachment:cd0682d9-ed5f-4d59-911a-3b9b16d22d15:image.png)
+![](./image2.png)
 
 We use the command `id` to check which user is running our commands. As expected, the user is **www-data**.
 
-![image.png](attachment:e343e097-9996-4370-a4e2-1c3ce8a6a95a:image.png)
+![](./image3.png)
 
 One of the hints in the challenge tells us that, once we gain shell access, we should try running `sudo -l`. From this, we learn that the `www-data` user can execute anything **as long as it's run with `sudo`**
 
-![image.png](attachment:18376618-1518-4445-9168-1d5ece9a0ad6:image.png)
+![](./image4.png)
 
 As mentioned in the challenge, the flag is located in `/root`. And indeed, when we run the following command, there it is: 
 
-![image.png](attachment:36a1bcd1-6b7b-48c5-bfb5-b491a5ed3520:image.png)
+![](./image5.png)
 
 If we try just `sudo cat flag.txt`, it returns “file not found,” so we need to pass the **full path**. And with that, we successfully retrieve the flag.
