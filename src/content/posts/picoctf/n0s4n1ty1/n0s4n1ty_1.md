@@ -7,9 +7,15 @@ tags: [CTF, picoctf, web]
 category: PicoCTF
 draft: false
 ---
+
+*“A developer has added profile picture upload functionality to a website. However, the implementation is flawed, and it presents an opportunity for you. Your mission, should you choose to accept it, is to navigate to the provided web page and locate the file upload area. Your ultimate goal is to find the hidden flag located in the /root directory.*
+
+<br>
+
 The challenge starts by giving us a simple page containing just a profile upload interface.
 
 ![upload interface](./image1.png)
+
 
 Trying to type or browse through the URL doesn’t give us anything — only a page error. With that, we can assume that the easiest way (and probably the intended way) to proceed is to **upload a shell**.
 
